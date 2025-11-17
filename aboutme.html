@@ -6,6 +6,7 @@
 <title>About Me</title>
 <link rel="stylesheet" href="style.css">
 <style>
+/* ===== BODY ===== */
 body {
     background: linear-gradient(135deg, #00c6ff, #0072ff);
     color: white;
@@ -13,21 +14,58 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+    justify-content: flex-start;  /* allow scrolling */
+    min-height: 100vh;
+    padding-top: 6rem;             /* space for fixed nav */
+    margin: 0;
 }
 
+/* ===== NAVIGATION ===== */
+nav {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: inline-flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00ffcc;
+}
+
+/* ===== CONTAINER ===== */
 .container {
     background: rgba(0, 0, 0, 0.3);
     border: 2px solid #00ffcc;
     border-radius: 20px;
     padding: 2rem 3rem;
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-    text-align: center;
+    text-align: left;
     width: 60%;
+    max-width: 800px;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    margin-bottom: 3rem;
 }
 
 .container:hover {
@@ -35,15 +73,42 @@ body {
     box-shadow: 0 0 50px rgba(0, 255, 255, 0.7);
 }
 
+/* ===== HEADINGS & PARAGRAPHS ===== */
 h1 {
     color: #00ffcc;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 p {
     font-size: 1.1rem;
     color: #e0f7ff;
     line-height: 1.8rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 1.5rem 1.5rem;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+    }
 }
 </style>
 </head>
@@ -62,9 +127,9 @@ p {
     <p>
         Hello! I’m Siyabonga Innocent Ndlovu, a passionate Web Developer and Designer who studied Computer Science at Tshwane University of Technology (TUT). I have a strong enthusiasm for building modern, interactive, and visually stunning applications that bring ideas to life.
 
-My expertise spans across HTML, CSS, JavaScript, Node.js, JSP/Servlets, JEE, and Kotlin, allowing me to create both dynamic front-end designs and powerful back-end systems. I also enjoy working with different operating systems like Linux and Windows, and integrating APIs to enhance app functionality.
+        My expertise spans across HTML, CSS, JavaScript, Node.js, JSP/Servlets, JEE, and Kotlin, allowing me to create both dynamic front-end designs and powerful back-end systems. I also enjoy working with different operating systems like Linux and Windows, and integrating APIs to enhance app functionality.
 
-Driven by curiosity and creativity, I continuously explore new technologies to deliver innovative, user-focused digital experiences that blend functionality with style.
+        Driven by curiosity and creativity, I continuously explore new technologies to deliver innovative, user-focused digital experiences that blend functionality with style.
     </p>
 </div>
 
