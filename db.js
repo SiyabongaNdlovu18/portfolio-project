@@ -1,3 +1,5 @@
+require('dotenv').config();  // Loads .env
+
 const mysql = require('mysql2/promise'); // ✅ use promise version
 const pool = mysql.createPool({
   host: process.env.DB_HOST,    // e.g., sql.freedb.tech

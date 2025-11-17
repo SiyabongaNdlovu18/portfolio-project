@@ -1,18 +1,25 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
-const pool = require('./db'); // import the promise pool
+const pool = require('./db'); // MySQL connection
 
 const app = express();
 
-// Serve static files from 'public' folder
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from ROOT
+app.use(express.static(__dirname));
+
+// Home route (root index.html)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // Test route
 app.get('/api/test', (req, res) => {
   res.json({ message: 'Server is running!' });
 });
 
-// Example API route to fetch projects
+// Fetch projects
 app.get('/api/projects', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT * FROM projects ORDER BY id DESC');
@@ -23,8 +30,5 @@ app.get('/api/projects', async (req, res) => {
   }
 });
 
-// Listen on Render's port or fallback to 5000
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
