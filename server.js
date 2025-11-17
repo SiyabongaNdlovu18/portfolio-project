@@ -1,15 +1,13 @@
 const mysql = require('mysql2');
 
-// Create the connection pool
 const pool = mysql.createPool({
-  host: 'sql.freedb.tech',
-  user: 'freedb_siyadbuser',
-  password: 'jK9r8K!%Kk*CJF@',
-  database: 'freedb_portfolioDB',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
 });
 
-// Export pool for queries
 module.exports = pool.promise();
