@@ -9,11 +9,9 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #0072ff, #00c6ff);
     color: #fff;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -34,6 +32,7 @@ nav ul {
     list-style: none;
     display: inline-flex;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 nav ul li a {
@@ -54,11 +53,14 @@ nav ul li a:hover {
 
 /* ==== TOP ROW ==== */
 .top-row {
-    margin-top: 6rem;
+    margin-top: 7rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 /* Profile Section */
@@ -66,21 +68,26 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .profile-pic {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
     transition: transform 0.6s ease, box-shadow 0.3s ease;
-    transform-style: preserve-3d;
 }
 
 .profile-pic:hover {
     transform: rotateY(20deg) rotateX(10deg) scale(1.1);
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+}
+
+.profile-text {
+    text-align: center;
 }
 
 .profile-text h1 {
@@ -100,16 +107,16 @@ nav ul li a:hover {
 
 .cube {
     position: relative;
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
     transform-style: preserve-3d;
     animation: rotateCube 12s infinite linear;
 }
 
 .face {
     position: absolute;
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
     background: rgba(0, 255, 204, 0.2);
     border: 2px solid #00ffcc;
     display: flex;
@@ -121,12 +128,13 @@ nav ul li a:hover {
     backdrop-filter: blur(4px);
 }
 
-.front { transform: rotateY(0deg) translateZ(80px); }
-.back { transform: rotateY(180deg) translateZ(80px); }
-.right { transform: rotateY(90deg) translateZ(80px); }
-.left { transform: rotateY(-90deg) translateZ(80px); }
-.top { transform: rotateX(90deg) translateZ(80px); }
-.bottom { transform: rotateX(-90deg) translateZ(80px); }
+/* Cube Faces */
+.front { transform: rotateY(0deg) translateZ(70px); }
+.back { transform: rotateY(180deg) translateZ(70px); }
+.right { transform: rotateY(90deg) translateZ(70px); }
+.left { transform: rotateY(-90deg) translateZ(70px); }
+.top { transform: rotateX(90deg) translateZ(70px); }
+.bottom { transform: rotateX(-90deg) translateZ(70px); }
 
 @keyframes rotateCube {
     from { transform: rotateX(0) rotateY(0); }
@@ -139,9 +147,10 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     gap: 3rem;
+    flex-wrap: wrap;
+    padding: 2rem;
 }
 
-/* Moving Image Animation */
 .moving-pic {
     animation: floatPic 6s ease-in-out infinite;
 }
@@ -159,7 +168,6 @@ nav ul li a:hover {
     object-fit: cover;
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
     transition: transform 0.6s ease, box-shadow 0.4s ease;
-    transform-style: preserve-3d;
 }
 
 .media-pic:hover, .video-3d:hover {
@@ -175,4 +183,55 @@ footer {
     border-top: 2px solid #00ffcc;
     font-size: 0.9rem;
     width: 100%;
+}
+
+/* ========= RESPONSIVE FOR PHONES ========= */
+@media (max-width: 768px) {
+
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .profile-pic {
+        width: 130px;
+        height: 130px;
+    }
+
+    .cube {
+        width: 120px;
+        height: 120px;
+    }
+
+    .face {
+        width: 120px;
+        height: 120px;
+    }
+
+    .top-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .bottom-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .media-pic, .video-3d {
+        width: 220px;
+        height: 150px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .profile-text h1 {
+        font-size: 1.6rem;
+    }
+
+    .media-pic, .video-3d {
+        width: 200px;
+        height: 140px;
+    }
 }
